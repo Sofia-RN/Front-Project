@@ -40,6 +40,7 @@ class Login extends React.Component{
             if(response.data.status == 200){
                 console.log("correcto")
                 localStorage.setItem("user", response.data.nombre);
+                
                 this.props.history.push("/home");
 
             }else{
@@ -49,6 +50,10 @@ class Login extends React.Component{
                 })
             }
         })
+    }
+
+    manejadorBotonRegister=()=>{
+                this.props.history.push("/pelis");
     }
     
 
@@ -77,16 +82,12 @@ class Login extends React.Component{
                         <br />
                         <input type="password" id="password" className="fadeIn third" name="password" placeholder="password" onChange={this.manejadorChange} />
                         <br />
-                        <input type="submit" className="fadeIn fourth" value="Log In" onClick={this.manejadorBoton} />
+                        <input type="submit" className="fadeIn fourth" value="Iniciar Sesion" onClick={this.manejadorBoton} />
                         </form>
 
                         <div id="formFooter">
-                        <a className="underlineHover" href="#" >Registrar usuario</a>
+                        <a className="underlineHover" onClick={this.manejadorBotonRegister}>Registrar usuario</a>
                         </div>
-
-
-
-
 
                     </div> 
                 </div>

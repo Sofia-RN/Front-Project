@@ -1,5 +1,5 @@
 body{
-    background-color: #414242;
+    background-color: #4c5255;
 }
 
 .papa{
@@ -13,3 +13,14 @@ body{
 .dos{
     width: 85%;
 }
+.div{
+
+    margin: 30px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    
+}
+.card{
+    width: 18rem;
+}
+
