@@ -1,0 +1,15 @@
+body{
+    background-color: #414242;
+}
+
+.papa{
+    display: flex;
+    flex-wrap: wrap;
+} 
+.uno{
+    width: 15%;
+    
+}
+.dos{
+    width: 85%;
+}
