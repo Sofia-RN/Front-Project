@@ -70,8 +70,6 @@ class Home extends React.Component{
                                 </div>
                             </div>
                         </div>
-
-
                         //Poner todo el html
                         );
                         }) :<></>

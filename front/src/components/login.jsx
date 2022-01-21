@@ -1,6 +1,6 @@
 import React from "react";
 import '../css/login.css';
-import cinepolis from '../img/cinepolis.png';
+import logo from '../img/disney_logo.png';
 import {Apiurl} from '../services/apirest';
 import axios from 'axios';
 
@@ -37,11 +37,11 @@ class Login extends React.Component{
         let url = Apiurl + "api/user/login/"
         axios.post(url,this.state.form)
         .then(response =>{
-            if(response.data.status == 200){
+            if(response.data.status === 200){
                 console.log("correcto")
                 localStorage.setItem("user", response.data.nombre);
                 
-                this.props.history.push("/home");
+                this.props.history.push("/peliculas");
 
             }else{
                 this.setState({
@@ -61,15 +61,16 @@ class Login extends React.Component{
         return(
             <React.Fragment>
 
+        <div id="hero">
+            <div class="hero-container" data-aos="fade-up">
                 <div className="wrapper fadeInDown">
                     <div id="formContent">
 
                         <div className="fadeIn first">
                             <br /><br />
-                        <img src={cinepolis} width="120px" alt="User Icon" />
+                        <img src={logo} width="120px" alt="User Icon" />
                         </div>
                         <br />
-                        
 
                         {this.state.error === true &&
                         <div className="alert alert-danger" role="alert">
@@ -82,15 +83,18 @@ class Login extends React.Component{
                         <br />
                         <input type="password" id="password" className="fadeIn third" name="password" placeholder="password" onChange={this.manejadorChange} />
                         <br />
-                        <input type="submit" className="fadeIn fourth" value="Iniciar Sesion" onClick={this.manejadorBoton} />
+                        <input type="submit" className="prueba" value="Iniciar Sesion" href="#" onClick={this.manejadorBoton} />
                         </form>
 
                         <div id="formFooter">
-                        <a className="underlineHover" onClick={this.manejadorBotonRegister}>Registrar usuario</a>
+                        <a className="underlineHover" href="#" onClick={this.manejadorBotonRegister}>Registrar usuario</a>
                         </div>
 
                     </div> 
                 </div>
+                
+            </div>
+        </div>
             </React.Fragment>
         );
     }

@@ -1,6 +1,6 @@
 import React from "react";
 import '../css/pelis.css';
-import cinepolis from '../img/cinepolis.png';
+import logo from '../img/disney_logo.png';
 import {Apiurl} from '../services/apirest';
 import axios from 'axios';
 
@@ -18,7 +18,10 @@ class Pelis extends React.Component{
             "password": ""
         },
         error:false,
-        errorMsg:""
+        errorMsg:"",
+        Msg: "",
+        success:false
+
     }
 
     manejadorSubmit(e){
@@ -40,12 +43,17 @@ class Pelis extends React.Component{
         axios.post(url,this.state.form)
         .then(response =>{
             if(response.data.status == 200){
-                console.log("correcto")                
-                this.props.history.push("/");
+                console.log("correcto")   
+                this.setState({
+                    success : true,
+                    Msg: "Usuario Creado"
+                })             
             }
         })
     }
-    
+    manejadorDireccionar=()=>{
+        this.props.history.push("/");
+        }
 
 
     render(){
@@ -53,19 +61,21 @@ class Pelis extends React.Component{
         return(
             <React.Fragment>
 
+                <div id="hero">
+                    <div className="hero-container" data-aos="fade-up">
                 <div className="wrapper fadeInDown">
                     <div id="formContent">
 
                         <div className="fadeIn first">
                             <br /><br />
-                        <img src={cinepolis} width="120px" alt="User Icon" />
+                        <img src={logo} width="120px" alt="User Icon" />
                         </div>
                         <br />
                         
 
-                        {this.state.error === true &&
-                        <div className="alert alert-danger" role="alert">
-                            {this.state.errorMsg}
+                        {this.state.success === true &&
+                        <div className="alert alert-success" role="alert">
+                            {this.state.Msg}
                         </div>
                         }
                         
@@ -81,11 +91,19 @@ class Pelis extends React.Component{
                         <input type="password" id="password" className="fadeIn third" name="password" placeholder="password" onChange={this.manejadorChange} />
                         <br />
                         <input type="submit" className="fadeIn fourth" value="Guardar" onClick={this.manejadorBoton} />
+
+                        <div id="formFooter">
+                        <a className="underlineHover" href="#" onClick={this.manejadorDireccionar}>Ir a Menu principal</a>
+                        </div>
                         </form>
+
+                        
 
 
                     </div> 
                 </div>
+                </div>
+  </div>
             </React.Fragment>
         );
     }
